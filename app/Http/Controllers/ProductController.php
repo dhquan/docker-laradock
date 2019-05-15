@@ -17,7 +17,7 @@ class ProductController extends Controller
         else
             return response(
                 [
-                    "status" => "success",
+                    "status" => "200",
                     "message" => 'Delete order success'
                 ], 200);
     }
@@ -27,7 +27,7 @@ class ProductController extends Controller
         $result = Product::find($product_id);
         if ($result == null) {
             return response([
-                "status" => "failed",
+                "status" => "404",
                 "message" => "Product not exist"
             ], 404);
         } else
@@ -41,13 +41,13 @@ class ProductController extends Controller
         if ($query == 0) {
             return response(
                 [
-                    "status" => "failed",
+                    "status" => "404",
                     "message" => 'Product not exist'
                 ], 404);
         } else {
             return response(
                 [
-                    "status" => "success",
+                    "status" => "200",
                     "message" => 'Delete successfully'
                 ], 200);
         }
@@ -60,7 +60,7 @@ class ProductController extends Controller
         if (Product::find($product_id) == null) {
             return response(
                 [
-                    "status" => "failed",
+                    "status" => "404",
                     "message" => 'Id not found'
                 ], 404);
         } else {
@@ -69,7 +69,7 @@ class ProductController extends Controller
             } catch (QueryException $ex) {
                 return response(
                     [
-                        "status" => "failed",
+                        "status" => "400",
                         "message" => 'Data incorrect'
                     ], 400
                 );
@@ -88,7 +88,7 @@ class ProductController extends Controller
         } catch (QueryException $ex) {
             return response(
                 [
-                    "status" => "failed",
+                    "status" => "401",
                     "message" => 'Data incorrect'
                 ], 401
             );
@@ -98,7 +98,7 @@ class ProductController extends Controller
         } else {
             return response(
                 [
-                    "status" => "failed",
+                    "status" => "404",
                     "message" => 'Id not found'
                 ], 404);
         }
